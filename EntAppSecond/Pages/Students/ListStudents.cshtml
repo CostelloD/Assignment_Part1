@@ -1,0 +1,46 @@
+﻿@page
+@model EntAppSecond.Pages.Students.ListStudentsModel
+@{
+    ViewData["Title"] = "Data Validation";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ListStudents</title>
+</head>
+<body>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Days</th>
+                <th>Guardian</th>
+                @*<th>Action</th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model.Students)
+            {
+                // list out each of the properties.
+            <tr>
+                @*<td>@student.PPSNumber</td>
+                <td>@student.FirstName</td>
+                <td>@student.SecondName</td>*@
+                <td>@student.ChildFirstNAme</td>
+                <td>@student.DaysRequested</td>
+                @*<td>@student.Guardian</td>*@
+                @*<td> <a asp-page="StudentDetails" asp-route-id="@student.StudentID">Details</a> </td>*@
+            </tr>
+            }
+        </tbody>
+    </table>
+
+
+</body>
+</html>

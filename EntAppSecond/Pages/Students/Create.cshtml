@@ -1,0 +1,202 @@
+﻿@page
+@model EntAppSecond.Pages.Students.CreateModel
+@{
+    ViewData["Title"] = "Data Validation";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+
+</head>
+<body>
+
+    <form method="post">
+
+        <fieldset>
+
+            <label class="form-group" asp-for=Student.ChildFirstNAme></label>
+            <input class="form-group" asp-for=Student.ChildFirstNAme />
+            <br />
+            <br />
+            @*<label asp-for=Student.ChildSurname></label>
+            <input asp-for=Student.ChildSurname />
+            <br />
+            <br />
+            <label asp-for=Student.PPSNumber></label>
+            <input asp-for=Student.PPSNumber />
+            <br />
+            <br />
+            <input type="radio" name="gender" value="male" checked asp-for="Student.Gender"> Male<br>
+            <input type="radio" name="gender" value="female" asp-for="Student.Gender"> Female<br>
+            <br />
+            <br />
+        </fieldset>
+
+
+
+
+
+
+        <label asp-for=Student.FirstName></label>
+        <input asp-for=Student.FirstName />
+        <br />
+        <br />
+        <label asp-for=Student.SecondName></label>
+        <input asp-for=Student.SecondName />
+        <br />
+        <br />
+
+        <div asp-validation-summary="All"></div>
+        <span asp-validation-for="Student.Guardian"></span>
+        <select asp-items="Html.GetEnumSelectList<CreateModel.Relationship>()">
+            <option value="value">text</option>
+        </select>
+        <br />
+        <br />
+
+        <textarea asp-for="Student.Address" rows="10" cols="30"></textarea>
+        <br>
+        <br />
+
+
+        <label asp-for=Student.PhoneMobile></label>
+        <input asp-for=Student.PhoneMobile />
+        <br />
+        <br />
+        <label asp-for=Student.PhoneSecond></label>
+        <input asp-for=Student.PhoneSecond />
+        <br />
+        <br />
+        <label asp-for=Student.PhoneThird></label>
+        <input asp-for=Student.PhoneThird />
+        <br />
+        <br />
+        <label asp-for=Student.FirstEmailAddress></label>
+        <input asp-for=Student.FirstEmailAddress />
+        <br />
+        <br />
+        <label asp-for=Student.SecondEmailAddress></label>
+        <input asp-for=Student.SecondEmailAddress />
+        <br />
+        <br />
+        <label asp-for=Student.FirstEmailAddress></label>
+        <input asp-for=Student.FirstEmailAddress />
+        <br />
+        <br />
+        <label asp-for=Student.FirstEmailAddress></label>
+        <input asp-for=Student.FirstEmailAddress />
+        <br />
+        <br />*@
+
+            <input type="radio" id="fulltime" value=10 checked asp-for="Student.HoursRequested" onclick="Calculate()"> Fulltime<br>
+            <input type="radio" id="partime" value=20 asp-for="Student.HoursRequested" onclick="Calculate()"> Partime<br>
+            <br />
+            <br />
+
+            <label asp-for=Student.HoursRequested></label>
+            <input asp-for=Student.HoursRequested />
+            <br />
+            <br />
+
+
+
+            <fieldset name="fieldset">
+                <legend>Please Select the Days of the Week you wish to attend</legend>
+                @{
+                    foreach (var day in Enum.GetNames(typeof(CreateModel.SelectedDays)))
+                    {
+                        <label />@day.ToString();
+                        <input type="checkbox" name="@day.ToString()" value="@day.ToString()" onclick="CalculateCost" /><br />
+                    }
+                }
+                <br>
+            </fieldset>
+
+            <input type="button" name="name" value="1" id="test" />
+
+            <p>test</p>
+
+
+            @*<label asp-for=Student.StartDate></label>
+        <input asp-for=Student.StartDate />
+        <br />
+        <br />*@
+
+            <br />
+            <br />
+            <button type="submit">Submit Application</button>
+
+            @*<fieldset>
+            <legend>Please Select Days of week</legend>
+
+            <label></label> <input />
+
+
+
+
+        </fieldset>*@
+
+
+            <label for="Days">What days do you want to atted</label><br>
+            <select id="SelectedDays" name="Days" size="5" multiple onchange="Calculate()">
+                <option value="1">Monday</option>
+                <option value="2">Tuesday</option>
+                <option value="3">Wednesday</option>
+                <option value="4">Thursday</option>
+                <option value="5">Friday</option>
+            </select>
+            <br>
+            <button name="order" id="daysselected" onclick="Calculate()">
+                Order Now
+            </button>
+            <p id="output">
+            </p>
+            <p id="output2">
+            </p>
+
+            <script>
+
+
+                function Calculate() {
+
+                    var noOfDays = 0;
+                    var total = 0;
+                    var rate =  0;
+
+
+                    for (var i = 0; i < document.getElementById("SelectedDays").options.length; i++) {
+                        if (document.getElementById("SelectedDays").options[i].selected) {
+                            noOfDays++;
+                        }
+                        document.getElementById("output").innerHTML = noOfDays.toString();
+                    }
+
+                    if (document.getElementById("fulltime").checked) {
+                        total = noOfDays * 35;
+                    } else {
+                        total = noOfDays * 20;
+                    }
+
+                    if (noOfDays > 3) {
+                        total = total * 0.9;
+                    } 
+
+                    document.getElementById("output2").innerHTML = total.toString();
+
+                }
+
+
+            </script>
+
+
+
+</form>
+
+
+
+</body>
+</html>
