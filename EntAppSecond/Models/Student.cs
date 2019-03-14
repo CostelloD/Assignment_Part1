@@ -76,10 +76,10 @@ namespace EntAppSecond.Models
 
 
         [Required (ErrorMessage = "Please select the days you with your child to attend")]
-        public string DaysRequested { get; set; }
+        public int DaysRequested { get; set; }
 
         [Required(ErrorMessage = "Please Select Partime of Full time option")]
-        public bool HoursRequested { get; set; }
+        public int HoursRequested { get; set; }
 
         //[Required(ErrorMessage = "Please Select a Startdate for your child")]
         //public DateTime StartDate { get; set; }

@@ -29,18 +29,6 @@ namespace EntAppSecond.Pages.Students
         }
 
 
-        [BindProperty]
-        public bool Monday { get; set; }
-        [BindProperty]
-        public bool Tuesday { get; set; }
-        [BindProperty]
-        public bool Wednesday { get; set; }
-        [BindProperty]
-        public bool Thursday { get; set; }
-        [BindProperty]
-        public bool Friday { get; set; }
-
-
         private readonly StudentContext _db;
 
         public CreateModel(StudentContext db)

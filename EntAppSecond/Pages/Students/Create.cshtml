@@ -1,7 +1,7 @@
 ﻿@page
 @model EntAppSecond.Pages.Students.CreateModel
 @{
-    ViewData["Title"] = "Data Validation";
+    ViewData["Title"] = "Application form";
 }
 
 <!DOCTYPE html>
@@ -92,31 +92,22 @@
         <br />
         <br />*@
 
-            <input type="radio" id="fulltime" value=10 checked asp-for="Student.HoursRequested" onclick="Calculate()"> Fulltime<br>
-            <input type="radio" id="partime" value=20 asp-for="Student.HoursRequested" onclick="Calculate()"> Partime<br>
-            <br />
-            <br />
-
-            <label asp-for=Student.HoursRequested></label>
-            <input asp-for=Student.HoursRequested />
+            <input type="radio" id="fulltime" value="1" asp-for="Student.HoursRequested" checked onclick="Calculate()"> Fulltime<br>
+            <input type="radio" id="partime" value="0" asp-for="Student.HoursRequested" onclick="Calculate()"> Partime<br>
             <br />
             <br />
 
 
-
-            <fieldset name="fieldset">
-                <legend>Please Select the Days of the Week you wish to attend</legend>
+            <select id="SelectedDays" name="Days" size="5" multiple onchange="Calculate()">
                 @{
                     foreach (var day in Enum.GetNames(typeof(CreateModel.SelectedDays)))
                     {
-                        <label />@day.ToString();
-                        <input type="checkbox" name="@day.ToString()" value="@day.ToString()" onclick="CalculateCost" /><br />
+                        <option value="value">@day.ToString()</option>
                     }
                 }
-                <br>
-            </fieldset>
+            </select>
 
-            <input type="button" name="name" value="1" id="test" />
+            <input type="hidden" asp-for=Student.DaysRequested id="days" />
 
             <p>test</p>
 
@@ -130,49 +121,31 @@
             <br />
             <button type="submit">Submit Application</button>
 
-            @*<fieldset>
-            <legend>Please Select Days of week</legend>
-
-            <label></label> <input />
-
-
-
-
-        </fieldset>*@
-
-
-            <label for="Days">What days do you want to atted</label><br>
-            <select id="SelectedDays" name="Days" size="5" multiple onchange="Calculate()">
-                <option value="1">Monday</option>
-                <option value="2">Tuesday</option>
-                <option value="3">Wednesday</option>
-                <option value="4">Thursday</option>
-                <option value="5">Friday</option>
-            </select>
-            <br>
-            <button name="order" id="daysselected" onclick="Calculate()">
-                Order Now
-            </button>
             <p id="output">
             </p>
             <p id="output2">
             </p>
+            <p id="output3">
+            </p>
 
             <script>
-
 
                 function Calculate() {
 
                     var noOfDays = 0;
                     var total = 0;
-                    var rate =  0;
+                    var primes = [3, 5, 7, 9, 11];
+                    var days = 1;
 
 
                     for (var i = 0; i < document.getElementById("SelectedDays").options.length; i++) {
                         if (document.getElementById("SelectedDays").options[i].selected) {
                             noOfDays++;
+                            days = days * primes[i];
                         }
                         document.getElementById("output").innerHTML = noOfDays.toString();
+                        document.getElementById("output3").innerHTML = days.toString();
+                        document.getElementById("days").value = days;
                     }
 
                     if (document.getElementById("fulltime").checked) {
