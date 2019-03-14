@@ -43,11 +43,11 @@
                     <input asp-for="Student.DateOfBirth" class="form-control">
                 </div>
                 <div class="form-group col-md-4">
-                    <div class="form-check">
+                    <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" value="Male" asp-for="Student.Gender" checked onclick="Calculate()">
                         <label class="form-check-label" asp-for="Student.Gender">Male</label>
                     </div>
-                    <div class="form-check">
+                    <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" value="Female" asp-for="Student.Gender" onclick="Calculate()">
                         <label class="form-check-label" for="exampleRadios2">Female</label>
                     </div>
@@ -59,8 +59,6 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit Application</button>
-        </fieldset>
 
 
 
@@ -68,97 +66,104 @@
 
 
 
+            <fieldset class="panel-body">
+                <legend>Please fill in your personal details below:</legend>
 
-
-        <fieldset class="panel-body">
-            <legend>Please fill in your personal details below:</legend>
-
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label asp-for="Student.FirstName">Firstname</label>
-                    <input asp-for="Student.FirstName" class="form-control" id="inputEmail4" placeholder="First Name">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Student.FirstName">Firstname</label>
+                        <input asp-for="Student.FirstName" class="form-control" id="inputEmail4" placeholder="First Name">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="Student.SecondName">Surname</label>
+                        <input asp-for="Student.SecondName" class="form-control" placeholder="Surname">
+                    </div>
                 </div>
-                <div class="form-group col-md-6">
-                    <label asp-for="Student.SecondName">Surname</label>
-                    <input asp-for="Student.SecondName" class="form-control" placeholder="Surname">
+
+                <div class="form-group">
+                    <label asp-for="Student.Address">Address</label>
+                    <input asp-for="Student.Address" class="form-control" placeholder="1234 Main St">
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label asp-for="Student.Address">Address</label>
-                <input asp-for="Student.Address" class="form-control" placeholder="1234 Main St">
-            </div>
-
-            <div class="form-group">
-                <label for="sel1">Select relationship to child from list:</label>
-                <select class="form-control" asp-items="Html.GetEnumSelectList<CreateModel.Relationship>()">
-                    <option value="value">Relationship</option>
-                </select>
-            </div>
-
-
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label asp-for="Student.PhoneMobile">Mobile Number</label>
-                    <input asp-for="Student.PhoneMobile" class="form-control" id="Mobile">
-                </div>
-                <div class="form-group col-md-4">
-                    <label asp-for="Student.PhoneSecond">Second Contact Number</label>
-                    <input asp-for="Student.PhoneSecond" class="form-control" id="Alternate Number">
-                </div>
-                <div class="form-group col-md-4">
-                    <label asp-for="Student.PhoneThird">Third Contact Number</label>
-                    <input asp-for="Student.PhoneThird" class="form-control" id="Other">
-                </div>
-            </div>
-
-
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label asp-for="Student.FirstEmailAddress">email address</label>
-                    <input asp-for="Student.FirstEmailAddress" class="form-control" placeholder="email address">
-                </div>
-                <div class="form-group col-md-6">
-                    <label asp-for="Student.FirstEmailAddress">Alternate email address</label>
-                    <input asp-for="Student.FirstEmailAddress" class="form-control" placeholder="email address">
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label asp-for="Student.DaysRequested">Please select the days that you require</label>
-
-                    <select id="SelectedDays" name="Days" size="5" multiple onchange="Calculate()">
-                        @{
-                            foreach (var day in Enum.GetNames(typeof(CreateModel.SelectedDays)))
-                            {
-                                <option value="value">@day.ToString()</option>
-                            }
-                        }
+                <div class="form-group">
+                    <label for="sel1">Select relationship to child from list:</label>
+                    <select class="form-control" asp-items="Html.GetEnumSelectList<CreateModel.Relationship>()">
+                        <option value="value">Relationship - Chose one</option>
                     </select>
-                    <input type="hidden" asp-for=Student.DaysRequested id="days" />
                 </div>
+
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label asp-for="Student.PhoneMobile">Mobile Number</label>
+                        <input asp-for="Student.PhoneMobile" class="form-control" id="Mobile">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label asp-for="Student.PhoneSecond">Second Contact Number</label>
+                        <input asp-for="Student.PhoneSecond" class="form-control" id="Alternate Number">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label asp-for="Student.PhoneThird">Third Contact Number</label>
+                        <input asp-for="Student.PhoneThird" class="form-control" id="Other">
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Student.FirstEmailAddress">email address</label>
+                        <input asp-for="Student.FirstEmailAddress" class="form-control" placeholder="email address">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="Student.FirstEmailAddress">Alternate email address</label>
+                        <input asp-for="Student.FirstEmailAddress" class="form-control" placeholder="email address">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Student.DaysRequested">Please select the days that you require</label>
+
+                        <select id="SelectedDays" name="Days" size="5" multiple onchange="Calculate()">
+                            @{
+                                foreach (var day in Enum.GetNames(typeof(CreateModel.SelectedDays)))
+                                {
+                                    <option value="value">@day.ToString()</option>
+                                }
+                            }
+                        </select>
+                        <input type="hidden" asp-for=Student.DaysRequested id="days" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="form-check-inline">
+                            <input type="radio" id="fulltime" value="1" asp-for="Student.HoursRequested" checked onclick="Calculate()">
+                            <label class="form-check-label" asp-for="Student.HoursRequested">Fulltime</label>
+                        </div>
+                        <div class="form-check-inline">
+                            <input type="radio" id="partime" value="0" asp-for="Student.HoursRequested" onclick="Calculate()">
+                            <label class="form-check-label" asp-for="Student.HoursRequested">Partime</label>
+                        </div>
+                    </div>
+                </div>
+
+
                 <div class="form-group col-md-6">
-                    <div class="form-check-inline">
-                        <input type="radio" id="fulltime" value="1" asp-for="Student.HoursRequested" checked onclick="Calculate()">
-                        <label class="form-check-label" asp-for="Student.HoursRequested">Fulltime</label>
-                    </div>
-                    <div class="form-check-inline">
-                        <input type="radio" id="partime" value="0" asp-for="Student.HoursRequested" onclick="Calculate()">
-                        <label class="form-check-label" asp-for="Student.HoursRequested">Partime</label>
-                    </div>
+                    <label asp-for="Student.StartDate">Start Date</label>
+                    <input asp-for="Student.StartDate" class="form-control">
                 </div>
-            </div>
 
 
-            <div class="form-group col-md-6 col-md-offset-0">
-                <label asp-for="Student.StartDate">Start Date</label>
-                <input asp-for="Student.StartDate" class="form-control">
-            </div>
+
+                <div class="form-group col-md-6">
+                    <span id="days"></span>
+                    <span id="price"></span>
+
+                </div>
 
 
-            <button type="submit" class="btn btn-primary">Submit Application</button>
-        </fieldset>
+
+                <button type="submit" class="btn btn-primary">Submit Application</button>
+            </fieldset>
 
 
 
@@ -166,19 +171,59 @@
 
     </form>
 
-@*<form method="post">
-
-        <div class="container">
+    <button onclick="Calculate()" type="button">press me</button>
 
 
-            <div class="row">
-                <div class="col">
-                    <input type="radio" id="fulltime" value="1" asp-for="Student.HoursRequested" checked onclick="Calculate()"> Fulltime<br>
-                    <input type="radio" id="partime" value="0" asp-for="Student.HoursRequested" onclick="Calculate()"> Partime<br>
+    <script>
+
+        function Calculate() {
+
+            var noOfDays = 0;
+            var total = 0;
+            var primes = [3, 5, 7, 9, 11];
+            var days = 1;
+
+
+            for (var i = 0; i < document.getElementById("SelectedDays").options.length; i++) {
+                if (document.getElementById("SelectedDays").options[i].selected) {
+                    noOfDays++;
+                    days = days * primes[i];
+                }
+                document.getElementById("output").innerHTML = noOfDays.toString();
+                document.getElementById("output3").innerHTML = days.toString();
+                document.getElementById("days").value = days;
+            }
+
+            if (document.getElementById("fulltime").checked) {
+                total = noOfDays * 35;
+            } else {
+                total = noOfDays * 20;
+            }
+
+            if (noOfDays > 3) {
+                total = total * 0.9;
+            }
+
+            document.getElementById("price").innerHTML = total.toString();
+
+        }
+
+
+    </script>
+
+    @*<form method="post">
+
+            <div class="container">
+
+
+                <div class="row">
+                    <div class="col">
+                        <input type="radio" id="fulltime" value="1" asp-for="Student.HoursRequested" checked onclick="Calculate()"> Fulltime<br>
+                        <input type="radio" id="partime" value="0" asp-for="Student.HoursRequested" onclick="Calculate()"> Partime<br>
+                    </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
 
 
 
@@ -235,80 +280,45 @@
             <br />
 
 
-        <br />
-        <br />
+            <br />
+            <br />
 
 
-        <select id="SelectedDays" name="Days" size="5" multiple onchange="Calculate()">
-            @{
-                foreach (var day in Enum.GetNames(typeof(CreateModel.SelectedDays)))
-                {
-                    <option value="value">@day.ToString()</option>
+            <select id="SelectedDays" name="Days" size="5" multiple onchange="Calculate()">
+                @{
+                    foreach (var day in Enum.GetNames(typeof(CreateModel.SelectedDays)))
+                    {
+                        <option value="value">@day.ToString()</option>
+                    }
                 }
-            }
-        </select>
+            </select>
 
-        <input type="hidden" asp-for=Student.DaysRequested id="days" />
+            <input type="hidden" asp-for=Student.DaysRequested id="days" />
 
-        <p>test</p>
+            <p>test</p>
 
 
-        <label asp-for=Student.StartDate></label>
+            <label asp-for=Student.StartDate></label>
             <input asp-for=Student.StartDate />
             <br />
             <br />
 
-        <br />
-        <br />
-        <button type="submit">Submit Application</button>
+            <br />
+            <br />
+            <button type="submit">Submit Application</button>
 
-        <p id="output">
-        </p>
-        <p id="output2">
-        </p>
-        <p id="output3">
-        </p>
-
-        <script>
-
-            function Calculate() {
-
-                var noOfDays = 0;
-                var total = 0;
-                var primes = [3, 5, 7, 9, 11];
-                var days = 1;
-
-
-                for (var i = 0; i < document.getElementById("SelectedDays").options.length; i++) {
-                    if (document.getElementById("SelectedDays").options[i].selected) {
-                        noOfDays++;
-                        days = days * primes[i];
-                    }
-                    document.getElementById("output").innerHTML = noOfDays.toString();
-                    document.getElementById("output3").innerHTML = days.toString();
-                    document.getElementById("days").value = days;
-                }
-
-                if (document.getElementById("fulltime").checked) {
-                    total = noOfDays * 35;
-                } else {
-                    total = noOfDays * 20;
-                }
-
-                if (noOfDays > 3) {
-                    total = total * 0.9;
-                }
-
-                document.getElementById("output2").innerHTML = total.toString();
-
-            }
-
-
-        </script>
+            <p id="output">
+            </p>
+            <p id="output2">
+            </p>
+            <p id="output3">
+            </p>
 
 
 
-    </form>*@
+
+
+        </form>*@
 
 
 </body>
