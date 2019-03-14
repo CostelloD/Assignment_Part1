@@ -24,6 +24,8 @@
                 @*<th>Action</th>*@
             </tr>
         </thead>
+        
+
         <tbody>
             @foreach (var student in Model.Students)
             {
@@ -33,8 +35,9 @@
         <td>@student.FirstName</td>
         <td>@student.SecondName</td>*@
                 <td>@student.ChildFirstNAme</td>
-                <td>@student.DaysRequested</td>
-                <td>@student.DaysRequested</td>
+                <td>@student.ChildSurname</td>
+                <td>@student.DateOfBirth</td>
+
                 @*<td>@student.Guardian</td>*@
                 @*<td> <a asp-page="StudentDetails" asp-route-id="@student.StudentID">Details</a> </td>*@
             </tr>
