@@ -25,3 +25,13 @@ body {
 .validation-summary-errors {
     color: red;
 }
+
+
+.spans {
+    background-color:darksalmon;
+    color:aliceblue;
+    border-radius:5px;
+    width:30px;
+    padding:5px;
+    font-size:large;
+}
