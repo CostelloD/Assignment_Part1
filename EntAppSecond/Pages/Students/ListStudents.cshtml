@@ -13,40 +13,224 @@
 </head>
 <body>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Days</th>
-                <th>Guardian</th>
-                @*<th>Action</th>*@
-            </tr>
-        </thead>
-        
+    <div style="background-color:khaki; border-radius:10px">
 
-        <tbody>
-            @foreach (var student in Model.Students)
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Surname</th>
+                    <th>Gender</th>
+                    <th>Date of Birth</th>
+                    <th>PPS Number</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                @foreach (var student in Model.Students)
+                {
+                    // list out each of the properties.
+                    <tr>
+
+                        <td>@student.ChildFirstNAme</td>
+                        <td>@student.ChildSurname</td>
+                        <td>@student.Gender</td>
+                        <td>@student.DateOfBirth</td>
+                        <td>@student.PPSNumber</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div style="background-color:aqua; border-radius:10px">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Surname</th>
+                    <th>Address</th>
+                    <th>Related</th>
+                    <th>Mobile</th>
+                    <th>Mobile(2)</th>
+                    <th>Alternate</th>
+                    <th>email</th>
+                    <th>email(2)</th>
+                    <th>No. Days</th>
+                    <th>Partime/fulltime</th>
+                    <th>startdate</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                @foreach (var student in Model.Students)
+                {
+                    // list out each of the properties.
+                    <tr>
+
+                        <td>@student.FirstName</td>
+                        <td>@student.SecondName</td>
+                        <td>@student.Address</td>
+                        <td>@student.Guardian</td>
+                        <td>@student.PhoneMobile</td>
+                        <td>@student.PhoneSecond</td>
+                        <td>@student.PhoneThird</td>
+                        <td>@student.FirstEmailAddress</td>
+                        <td>@student.SecondEmailAddress</td>
+                        <td>@student.DaysRequested</td>
+                        <td>@student.HoursRequested</td>
+                        <td>@student.StartDate</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div style="background-color:burlywood; border-radius:10px">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Total Days</th>
+                    <th>Partime/Fulltime</th>
+                    <th>Cost per week</th>
+                    <th>Startdate</th>
+
+                </tr>
+            </thead>
+
+
+            <tbody>
+                @foreach (var student in Model.Students)
+                {
+                    // list out each of the properties.
+                    <tr>
+
+                        <td>@student.</td>
+                        <td>@student.SecondName</td>
+                        <td >
+                            @{
+
+                                int x = Convert.ToInt32(@student.DaysRequested.ToString());
+                                int[] primes = { 3, 5, 7, 11, 13 };
+                                IList<string> days = new List<string>();
+
+
+                                foreach (var n in primes)
+                                {
+                                    if (x % n == 0)
+                                    {
+                                        switch (n)
+                                        {
+                                            case 0:
+                                                days.Add("Monday");
+                                                break;
+                                            case 1:
+                                                days.Add("Tuesday");
+                                                break;
+                                            case 2:
+                                                days.Add("Wednesday");
+                                                break;
+                                            case 3:
+                                                days.Add("Thursday");
+                                                break;
+                                            case 4:
+                                                days.Add("Friday");
+                                                break;
+                                        }
+
+                                    }
+                                }
+
+                                string totalDays = string.Join(",", days.ToArray());
+                                Console.WriteLine(totalDays);
+
+                            }
+                        </td>
+                        <td>@student.Guardian</td>
+
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @*@{ 
+
+        int x = @student.DaysRequested.ToString();
+        int[] primes = { 3, 5, 7, 11, 13 };
+        IList<string> days = new List<string>();
+
+
+        foreach (var n in primes)
+        {
+            if (x % n == 0)
             {
-                // list out each of the properties.
-            <tr>
-                @*<td>@student.PPSNumber</td>
-        <td>@student.FirstName</td>
-        <td>@student.SecondName</td>*@
-                <td>@student.ChildFirstNAme</td>
-                <td>@student.ChildSurname</td>
-                <td>@student.DateOfBirth</td>
+                switch (n)
+                {
+                    case 0: days.Add("Monday");
+                        break;
+                    case 1: days.Add("Tuesday");
+                        break;
+                    case 2: days.Add("Wednesday");
+                        break;
+                    case 3: days.Add("Thursday");
+                        break;
+                    case 4: days.Add("Friday");
+                        break;
+                }
 
-                @*<td>@student.Guardian</td>*@
-                @*<td> <a asp-page="StudentDetails" asp-route-id="@student.StudentID">Details</a> </td>*@
-            </tr>
             }
-        </tbody>
-    </table>
+        }
 
-    <p>Another Test Branch</p>
-    <p>Modified Test brach</p>
+        string totalDays = string.Join(",", days.ToArray());
+
+    }*@
+
+
+
+    @*<td> <a asp-page="StudentDetails" asp-route-id="@student.StudentID">Details</a> </td>*@
+
+    <script>
+
+        function Getdays() {
+
+
+            var primes = [3, 5, 7, 9, 11];
+            var x = document.getElementById("days").innerHTML.toString();
+            var days = [];
+
+
+            for (var i = 0; i < primes.length; i++) {
+                if (x % primes[i]) {
+                    switch (i) {
+                        case 0: days.push("Monday");
+                        case 1: days.push("Tuesday");
+                        case 2: days.push("Wednesday");
+                        case 3: days.push("Thursday");
+                        case 4: days.push("Friday");
+                        default:
+                    }
+
+                    document.getElementById("days").innerHTML = days.toString();
+                }
+
+            }
+            
+        }
+
+
+    </script>
+
+
+
+
 
 </body>
 </html>
