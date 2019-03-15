@@ -109,49 +109,14 @@
                 @foreach (var student in Model.Students)
                 {
                     // list out each of the properties.
+
+
                     <tr>
 
-                        <td>@student.</td>
+
                         <td>@student.SecondName</td>
-                        <td >
-                            @{
-
-                                int x = Convert.ToInt32(@student.DaysRequested.ToString());
-                                int[] primes = { 3, 5, 7, 11, 13 };
-                                IList<string> days = new List<string>();
-
-
-                                foreach (var n in primes)
-                                {
-                                    if (x % n == 0)
-                                    {
-                                        switch (n)
-                                        {
-                                            case 0:
-                                                days.Add("Monday");
-                                                break;
-                                            case 1:
-                                                days.Add("Tuesday");
-                                                break;
-                                            case 2:
-                                                days.Add("Wednesday");
-                                                break;
-                                            case 3:
-                                                days.Add("Thursday");
-                                                break;
-                                            case 4:
-                                                days.Add("Friday");
-                                                break;
-                                        }
-
-                                    }
-                                }
-
-                                string totalDays = string.Join(",", days.ToArray());
-                                Console.WriteLine(totalDays);
-
-                            }
-                        </td>
+                        <td>@Model.Listdays.ToString()</td>
+                        <td>@student.StartDate</td>
                         <td>@student.Guardian</td>
 
 
@@ -161,38 +126,27 @@
         </table>
     </div>
 
-    @*@{ 
+    <div style="background-color:burlywood; border-radius:10px">
 
-        int x = @student.DaysRequested.ToString();
-        int[] primes = { 3, 5, 7, 11, 13 };
-        IList<string> days = new List<string>();
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Total Days</th>
+                </tr>
+            </thead>
 
 
-        foreach (var n in primes)
-        {
-            if (x % n == 0)
-            {
-                switch (n)
+            <tbody>
+                @foreach (var day in Model.Listdays)
                 {
-                    case 0: days.Add("Monday");
-                        break;
-                    case 1: days.Add("Tuesday");
-                        break;
-                    case 2: days.Add("Wednesday");
-                        break;
-                    case 3: days.Add("Thursday");
-                        break;
-                    case 4: days.Add("Friday");
-                        break;
+                    // list out each of the properties.
+                <tr>
+                    <td>@day</td>
+                </tr>
                 }
-
-            }
-        }
-
-        string totalDays = string.Join(",", days.ToArray());
-
-    }*@
-
+            </tbody>
+        </table>
+    </div>
 
 
     @*<td> <a asp-page="StudentDetails" asp-route-id="@student.StudentID">Details</a> </td>*@
@@ -201,9 +155,8 @@
 
         function Getdays() {
 
-
-            var primes = [3, 5, 7, 9, 11];
             var x = document.getElementById("days").innerHTML.toString();
+            var primes = [3, 5, 7, 9, 11];
             var days = [];
 
 
@@ -222,13 +175,49 @@
                 }
 
             }
-            
+
         }
 
 
     </script>
 
 
+    @*@{
+
+            int x = Convert.ToInt32(@student.DaysRequested.ToString());
+            int[] primes = { 3, 5, 7, 11, 13 };
+            IList<string> days = new List<string>();
+
+
+            foreach (var n in primes)
+            {
+                if (x % n == 0)
+                {
+                    switch (n)
+                    {
+                        case 3:
+                            days.Add("Monday");
+                            break;
+                        case 5:
+                            days.Add("Tuesday");
+                            break;
+                        case 7:
+                            days.Add("Wednesday");
+                            break;
+                        case 11:
+                            days.Add("Thursday");
+                            break;
+                        case 13:
+                            days.Add("Friday");
+                            break;
+                    }
+
+                }
+            }
+
+            string listdays = string.Join(",", days.ToArray());
+            Console.WriteLine(listdays);
+        }*@
 
 
 

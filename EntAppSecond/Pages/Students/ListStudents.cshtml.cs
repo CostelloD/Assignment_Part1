@@ -22,6 +22,8 @@ namespace EntAppSecond.Pages.Students
             friday,
         }
 
+        [BindProperty]
+        public IList<string> Listdays { get; set; }
 
         private readonly StudentContext _db;
 
@@ -35,6 +37,54 @@ namespace EntAppSecond.Pages.Students
         public async Task OnGetAsync()
         {
             Students = await _db.Students.AsNoTracking().ToListAsync();
+            Listdays = days();
         }
+
+
+        public IList<string> days()
+        {
+            List<string> listdays = new List<string>();
+
+            foreach ( Student student in Students)
+            {
+
+                int x = Convert.ToInt32(@student.DaysRequested.ToString());
+                int[] primes = { 3, 5, 7, 11, 13 };
+                IList<string> days = new List<string>();
+
+
+                foreach (var n in primes)
+                {
+                    if (x % n == 0)
+                    {
+                        switch (n)
+                        {
+                            case 3:
+                                days.Add("Monday");
+                                break;
+                            case 5:
+                                days.Add("Tuesday");
+                                break;
+                            case 7:
+                                days.Add("Wednesday");
+                                break;
+                            case 11:
+                                days.Add("Thursday");
+                                break;
+                            case 13:
+                                days.Add("Friday");
+                                break;
+                        }
+
+                    }
+                }
+
+                string all = string.Join(",", days.ToArray());
+                listdays.Add(all);
+            }
+
+            return listdays;
+        }
+
     }
 }
