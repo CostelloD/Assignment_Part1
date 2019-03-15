@@ -1,4 +1,4 @@
-﻿@page "{pps}"
+﻿@page "{PPSNumber}"
 @model EntAppSecond.Pages.Students.ConfirmEnrolmentModel
 @{
     ViewData["Title"] = "ConfirmEnrolment";
@@ -22,19 +22,18 @@
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>PPSNumber</th>
+
             </tr>
         </thead>
         <tbody>
-            @foreach (var student in Model.Students)
-            {
 
                 <tr>
-                    <td>@student.ChildFirstNAme</td>
-                    <td>@student.ChildSurname</td>
-                    <td>@student.PPSNumber</td>
+                    <td>@Model.Student.ChildFirstNAme</td>
+                    <td>@Model.Student.ChildSurname</td>
+                    <td>@Model.Student.PPSNumber</td>
 
                 </tr>
-            }
+
         </tbody>
     </table>
 

@@ -23,9 +23,9 @@ namespace EntAppSecond.Pages.Students
         [BindProperty]
         public Student Student { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string pps)
+        public async Task<IActionResult> OnGetAsync(string PPSNumber)
         {
-            Student = await _db.Students.FindAsync(pps);
+            Student = await _db.Students.FindAsync(PPSNumber);
 
             if (Student == null)
             {

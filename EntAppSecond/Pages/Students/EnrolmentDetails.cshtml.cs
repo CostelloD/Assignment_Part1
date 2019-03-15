@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using EntAppSecond.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace EntAppSecond.Pages.Students
 {
@@ -31,6 +32,7 @@ namespace EntAppSecond.Pages.Students
             }
             return Page();
         }
+
 
         public IList<Student> Students { get; private set; }
 

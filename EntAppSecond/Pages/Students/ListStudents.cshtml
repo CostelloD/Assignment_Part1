@@ -32,16 +32,16 @@
                 @foreach (var student in Model.Students)
                 {
                     // list out each of the properties.
-                <tr>
+                    <tr>
 
-                    <td>@student.ChildFirstNAme</td>
-                    <td>@student.ChildSurname</td>
-                    <td>@student.Gender</td>
-                    <td>@student.DateOfBirth</td>
-                    <td>@student.PPSNumber</td>
-                    <td>@student.StartDate</td>
+                        <td>@student.ChildFirstNAme</td>
+                        <td>@student.ChildSurname</td>
+                        <td>@student.Gender</td>
+                        <td>@student.DateOfBirth</td>
+                        <td>@student.PPSNumber</td>
+                        <td>@student.StartDate</td>
 
-                </tr>
+                    </tr>
                 }
             </tbody>
         </table>
@@ -126,7 +126,7 @@
     </div>
 
 
-
+    <a asp-page="ConfirmEnrolment" asp-route-PPSNumber="s1234567">Details</a>
 
 </body>
 </html>

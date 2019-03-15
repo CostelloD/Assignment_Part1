@@ -91,7 +91,6 @@ namespace EntAppSecond.Pages.Students
         }
 
 
-
         public IList<double> Cost()
 
         {

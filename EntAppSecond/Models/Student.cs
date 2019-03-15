@@ -11,7 +11,7 @@ namespace EntAppSecond.Models
 {
     public class Student
     {
-        [Key]
+
         [Display(Name = "First Name")]
         [Required(ErrorMessage = "Please enter a First for the child")]
         [MinLength(2, ErrorMessage = "First Name must contain at least two characters")]
@@ -23,9 +23,10 @@ namespace EntAppSecond.Models
         [MinLength(3, ErrorMessage = "Surname Name must contain at least three characters")]
         public string ChildSurname { get; set; }
 
+        [Key]
         [Required(ErrorMessage = "Please Enter a valid PPS Number")]
         [RegularExpression(@"(s|S)\d{7}", ErrorMessage = "Not an valid PPS Number")]
-        public string PPSNumber { get; set; } = "";
+        public string PPSNumber { get; set; }
 
         [Required(ErrorMessage = "Please enter a date of birth for the child")]
         [DataType(DataType.Date)]
@@ -40,12 +41,12 @@ namespace EntAppSecond.Models
         [Display(Name = "First Name")]
         [Required(ErrorMessage = "Please enter a First Name")]
         [MinLength(2, ErrorMessage = "First Name must contain at least two characters")]
-        public string FirstName { get; set; } = "";
+        public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Please enter a Second Name")]
         [DisplayName("Second Name")]
         [MinLength(3, ErrorMessage = "First Name must contain at least three characters")]
-        public string SecondName { get; set; } = "";
+        public string SecondName { get; set; }
 
 
         [Required(ErrorMessage = "Please enter your address")]
