@@ -1,0 +1,34 @@
+﻿@page
+@model EntAppSecond.Pages.Students.EnrolmentDetailsModel
+@{
+    ViewData["Title"] = "EnrolmentDetails";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<body>
+
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>PPSNumber</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model.Students)
+            {
+
+            <tr>
+                <td>@student.ChildFirstNAme</td>
+                <td>@student.ChildSurname</td>
+                <td>@student.PPSNumber</td>
+
+
+                <td> <a asp-page="StudentDetails" asp-route-pps="@student.PPSNumber" >Details</a> </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</body>

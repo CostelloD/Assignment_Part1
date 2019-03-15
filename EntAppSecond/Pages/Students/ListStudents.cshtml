@@ -23,6 +23,7 @@
                     <th>Gender</th>
                     <th>Date of Birth</th>
                     <th>PPS Number</th>
+                    <th>Start Date</th>
                 </tr>
             </thead>
 
@@ -31,15 +32,16 @@
                 @foreach (var student in Model.Students)
                 {
                     // list out each of the properties.
-                    <tr>
+                <tr>
 
-                        <td>@student.ChildFirstNAme</td>
-                        <td>@student.ChildSurname</td>
-                        <td>@student.Gender</td>
-                        <td>@student.DateOfBirth</td>
-                        <td>@student.PPSNumber</td>
+                    <td>@student.ChildFirstNAme</td>
+                    <td>@student.ChildSurname</td>
+                    <td>@student.Gender</td>
+                    <td>@student.DateOfBirth</td>
+                    <td>@student.PPSNumber</td>
+                    <td>@student.StartDate</td>
 
-                    </tr>
+                </tr>
                 }
             </tbody>
         </table>
@@ -59,9 +61,6 @@
                     <th>Alternate</th>
                     <th>email</th>
                     <th>email(2)</th>
-                    <th>No. Days</th>
-                    <th>Partime/fulltime</th>
-                    <th>startdate</th>
                 </tr>
             </thead>
 
@@ -69,7 +68,6 @@
             <tbody>
                 @foreach (var student in Model.Students)
                 {
-                    // list out each of the properties.
                     <tr>
 
                         <td>@student.FirstName</td>
@@ -81,9 +79,7 @@
                         <td>@student.PhoneThird</td>
                         <td>@student.FirstEmailAddress</td>
                         <td>@student.SecondEmailAddress</td>
-                        <td>@student.DaysRequested</td>
-                        <td>@student.HoursRequested</td>
-                        <td>@student.StartDate</td>
+
 
                     </tr>
                 }
@@ -91,133 +87,44 @@
         </table>
     </div>
 
+
+
     <div style="background-color:burlywood; border-radius:10px">
 
         <table class="table">
             <thead>
                 <tr>
-                    <th>Total Days</th>
+                    <th>Days to attend</th>
                     <th>Partime/Fulltime</th>
-                    <th>Cost per week</th>
-                    <th>Startdate</th>
-
+                    <th>Total Cost (per week)</th>
                 </tr>
             </thead>
 
 
             <tbody>
-                @foreach (var student in Model.Students)
-                {
-                    // list out each of the properties.
 
-
-                    <tr>
-
-
-                        <td>@student.SecondName</td>
-                        <td>@Model.Listdays.ToString()</td>
-                        <td>@student.StartDate</td>
-                        <td>@student.Guardian</td>
-
-
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-
-    <div style="background-color:burlywood; border-radius:10px">
-
-        <table class="table">
-            <thead>
                 <tr>
-                    <th>Total Days</th>
-                </tr>
-            </thead>
-
-
-            <tbody>
-                @foreach (var day in Model.Listdays)
-                {
-                    // list out each of the properties.
-                <tr>
-                    <td>@day</td>
-                </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-
-
-    @*<td> <a asp-page="StudentDetails" asp-route-id="@student.StudentID">Details</a> </td>*@
-
-    <script>
-
-        function Getdays() {
-
-            var x = document.getElementById("days").innerHTML.toString();
-            var primes = [3, 5, 7, 9, 11];
-            var days = [];
-
-
-            for (var i = 0; i < primes.length; i++) {
-                if (x % primes[i]) {
-                    switch (i) {
-                        case 0: days.push("Monday");
-                        case 1: days.push("Tuesday");
-                        case 2: days.push("Wednesday");
-                        case 3: days.push("Thursday");
-                        case 4: days.push("Friday");
-                        default:
-                    }
-
-                    document.getElementById("days").innerHTML = days.toString();
-                }
-
-            }
-
-        }
-
-
-    </script>
-
-
-    @*@{
-
-            int x = Convert.ToInt32(@student.DaysRequested.ToString());
-            int[] primes = { 3, 5, 7, 11, 13 };
-            IList<string> days = new List<string>();
-
-
-            foreach (var n in primes)
-            {
-                if (x % n == 0)
-                {
-                    switch (n)
+                    @foreach (var day in Model.Listdays)
                     {
-                        case 3:
-                            days.Add("Monday");
-                            break;
-                        case 5:
-                            days.Add("Tuesday");
-                            break;
-                        case 7:
-                            days.Add("Wednesday");
-                            break;
-                        case 11:
-                            days.Add("Thursday");
-                            break;
-                        case 13:
-                            days.Add("Friday");
-                            break;
+                        <td>@day</td>
                     }
 
-                }
-            }
+                    @foreach (var student in Model.Students)
+                    {
+                        <td>@student.HoursRequested</td>
+                    }
 
-            string listdays = string.Join(",", days.ToArray());
-            Console.WriteLine(listdays);
-        }*@
+                    @foreach (var cost in Model.TotalCost)
+                    {
+                        <td>@cost</td>
+
+                    }
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 
 
 

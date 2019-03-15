@@ -25,6 +25,9 @@ namespace EntAppSecond.Pages.Students
         [BindProperty]
         public IList<string> Listdays { get; set; }
 
+        [BindProperty]
+        public IList<double> TotalCost { get; set; }
+
         private readonly StudentContext _db;
 
         public ListStudentsModel(StudentContext db)
@@ -38,6 +41,7 @@ namespace EntAppSecond.Pages.Students
         {
             Students = await _db.Students.AsNoTracking().ToListAsync();
             Listdays = days();
+            TotalCost = Cost();
         }
 
 
@@ -86,5 +90,47 @@ namespace EntAppSecond.Pages.Students
             return listdays;
         }
 
+
+
+        public IList<double> Cost()
+
+        {
+            List<double> cost = new List<double>();
+
+            foreach (Student student in Students)
+            {
+
+                int noOfDays = 0;
+                int x = Convert.ToInt32(@student.DaysRequested.ToString());
+                int y = Convert.ToInt32(@student.HoursRequested.ToString());
+                double total = 0;
+                int[] primes = { 3, 5, 7, 11, 13 };
+
+                foreach (var n in primes)
+                {
+                    if (x % n == 0)
+                    {
+                        noOfDays++;
+                    }
+                }
+
+                if (y == 1) {
+                        total = noOfDays * 35;
+                    } else {
+                        total = noOfDays * 20;
+                    }
+
+                if (noOfDays > 3)
+                    {
+                        total = total * 0.9;
+                    }
+
+               cost.Add(total);
+            }
+
+            return cost;
+
+
+        }
     }
 }

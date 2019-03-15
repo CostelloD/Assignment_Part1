@@ -5,17 +5,15 @@ using System.Threading.Tasks;
 using EntAppSecond.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 
 namespace EntAppSecond.Pages.Students
 {
-    public class ConfirmEnrolmentModel : PageModel
+    public class EnrolmentDetailsModel : PageModel
     {
 
         private readonly StudentContext _db;
 
-        public ConfirmEnrolmentModel(StudentContext db)
+        public EnrolmentDetailsModel(StudentContext db)
         {
             _db = db;
         }
@@ -36,6 +34,6 @@ namespace EntAppSecond.Pages.Students
 
         public IList<Student> Students { get; private set; }
 
-
     }
+
 }
