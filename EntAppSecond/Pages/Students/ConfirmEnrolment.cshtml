@@ -1,4 +1,4 @@
-﻿@page "{PPSNumber}"
+﻿@page "{PPSNumber?}"
 @model EntAppSecond.Pages.Students.ConfirmEnrolmentModel
 @{
     ViewData["Title"] = "ConfirmEnrolment";
@@ -31,7 +31,6 @@
                     <td>@Model.Student.ChildFirstNAme</td>
                     <td>@Model.Student.ChildSurname</td>
                     <td>@Model.Student.PPSNumber</td>
-
                 </tr>
 
         </tbody>

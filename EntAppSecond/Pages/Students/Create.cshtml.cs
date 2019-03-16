@@ -49,7 +49,7 @@ namespace EntAppSecond.Pages.Students
             {
                 _db.Students.Add(Student);
                 await _db.SaveChangesAsync();
-                return RedirectToPage("ListStudents");
+                return RedirectToPage("/Students/ConfirmEnrolment", new {Student.PPSNumber});
             }
 
             else
