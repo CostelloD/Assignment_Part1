@@ -88,14 +88,34 @@
     </div>
 
 
-
-    <div style="background-color:burlywood; border-radius:10px">
-
+    <div class="col-md-6" style="background-color:lavender;">
         <table class="table">
             <thead>
                 <tr>
                     <th>Days to attend</th>
-                    <th>Partime/Fulltime</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+
+                @foreach (var day in Model.Listdays)
+                {
+                    <tr>
+                        <td>@day</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+
+
+    </div>
+    <div class="col-md-6" style="background-color:lavenderblush;">
+        <table class="table">
+            <thead>
+                <tr>
                     <th>Total Cost (per week)</th>
                 </tr>
             </thead>
@@ -103,30 +123,19 @@
 
             <tbody>
 
-                <tr>
-                    @foreach (var day in Model.Listdays)
-                    {
-                        <td>@day</td>
-                    }
-
-                    @foreach (var student in Model.Students)
-                    {
-                        <td>@student.HoursRequested</td>
-                    }
-
-                    @foreach (var cost in Model.TotalCost)
-                    {
+                @foreach (var cost in Model.TotalCost)
+                {
+                    <tr>
                         <td>@cost</td>
-
-                    }
-
-                </tr>
+                    </tr>
+                }
             </tbody>
         </table>
+
+
     </div>
 
 
-    <a asp-page="ConfirmEnrolment" asp-route-PPSNumber="s1234567">Details</a>
 
 </body>
 </html>

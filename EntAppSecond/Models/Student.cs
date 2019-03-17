@@ -78,7 +78,7 @@ namespace EntAppSecond.Models
         [DataType(DataType.EmailAddress)]
         public string SecondEmailAddress { get; set; }
 
-
+        [Range(1,15015)]
         [Required(ErrorMessage = "Please select the days you with your child to attend")]
         public int DaysRequested { get; set; }
 

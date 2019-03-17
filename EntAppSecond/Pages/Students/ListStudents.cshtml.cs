@@ -85,8 +85,8 @@ namespace EntAppSecond.Pages.Students
 
                 string all = string.Join(",", days.ToArray());
                 listdays.Add(all);
+                x = 0;
             }
-
             return listdays;
         }
 

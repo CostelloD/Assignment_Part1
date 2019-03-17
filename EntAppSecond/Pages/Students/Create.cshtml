@@ -177,7 +177,7 @@
 
                 var noOfDays = 0;
                 var total = 0;
-                var primes = [3, 5, 7, 9, 11];
+                var primes = [3, 5, 7, 11, 13];
                 var days = 1;
 
 
@@ -186,10 +186,11 @@
                         noOfDays++;
                         days = days * primes[i];
                     }
-                    document.getElementById("numberofdays").innerHTML = noOfDays.toString();
-                    //document.getElementById("days").innerHTML = days.toString();
-                    document.getElementById("primedays").value = days;
                 }
+
+                document.getElementById("numberofdays").innerHTML = noOfDays.toString();
+                document.getElementById("primedays").value = days;
+
 
                 if (document.getElementById("fulltime").checked) {
                     total = noOfDays * 35;
