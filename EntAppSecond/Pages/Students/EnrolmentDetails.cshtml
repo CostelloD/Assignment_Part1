@@ -1,4 +1,4 @@
-﻿@page "{pps?}"
+﻿@page "{PPSNumber?}"
 @model EntAppSecond.Pages.Students.EnrolmentDetailsModel
 @{
     ViewData["Title"] = "EnrolmentDetails";
@@ -7,28 +7,110 @@
 
 <body>
 
-    <table class="table">
-        <thead>
-            <tr>
+    <div style="background-color:khaki; border-radius:10px">
 
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>PPSNumber</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var student in Model.Students)
-            {
-
-            <tr>
-                <td>@student.ChildFirstNAme</td>
-                <td>@student.ChildSurname</td>
-                <td>@student.PPSNumber</td>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Surname</th>
+                    <th>Gender</th>
+                    <th>Date of Birth</th>
+                    <th>PPS Number</th>
+                    <th>Start Date</th>
+                </tr>
+            </thead>
 
 
-                <td> <a asp-page="StudentDetails" asp-route-pps="@student.PPSNumber" >Details</a> </td>
-            </tr>
-            }
-        </tbody>
-    </table>
+            <tbody>
+
+                    <tr>
+
+                        <td>@Model.Student.ChildFirstNAme</td>
+                        <td>@Model.Student.ChildSurname</td>
+                        <td>@Model.Student.Gender</td>
+                        <td>@Model.Student.DateOfBirth</td>
+                        <td>@Model.Student.PPSNumber</td>
+                        <td>@Model.Student.StartDate</td>
+
+                    </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div style="background-color:aqua; border-radius:10px">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Surname</th>
+                    <th>Address</th>
+                    <th>Related</th>
+                    <th>Mobile</th>
+                    <th>Mobile(2)</th>
+                    <th>Alternate</th>
+                    <th>email</th>
+                    <th>email(2)</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+
+                    <tr>
+
+                        <td>@Model.Student.FirstName</td>
+                        <td>@Model.Student.SecondName</td>
+                        <td>@Model.Student.Address</td>
+                        <td>@Model.Student.Guardian</td>
+                        <td>@Model.Student.PhoneMobile</td>
+                        <td>@Model.Student.PhoneSecond</td>
+                        <td>@Model.Student.PhoneThird</td>
+                        <td>@Model.Student.FirstEmailAddress</td>
+                        <td>@Model.Student.SecondEmailAddress</td>
+
+
+                    </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="col-md-6" style="background-color:lavender;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Days to attend</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                    <tr>
+                        <td>@Model.Listdays</td>
+                    </tr>
+            </tbody>
+        </table>
+
+
+
+    </div>
+    <div class="col-md-6" style="background-color:lavenderblush;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Total Cost (per week)</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                    <tr>
+                        <td>@Model.TotalCost</td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+
 </body>

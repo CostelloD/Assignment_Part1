@@ -37,6 +37,7 @@ namespace EntAppSecond.Pages.Students
 
         public IList<Student> Students { get; private set; }
 
+
         public async Task OnGetAsync()
         {
             Students = await _db.Students.AsNoTracking().ToListAsync();
