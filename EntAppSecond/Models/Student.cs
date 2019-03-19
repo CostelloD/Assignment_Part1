@@ -30,6 +30,8 @@ namespace EntAppSecond.Models
 
         [Required(ErrorMessage = "Please enter a date of birth for the child")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [BirthDate]
         public DateTime DateOfBirth { get; set; }
 
         [Required(ErrorMessage = "Please Select your childs gender")]
@@ -86,6 +88,9 @@ namespace EntAppSecond.Models
         public int HoursRequested { get; set; }
 
         [Required(ErrorMessage = "Please Select a Startdate for your child")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [StartDate]
         public DateTime StartDate { get; set; }
 
 
