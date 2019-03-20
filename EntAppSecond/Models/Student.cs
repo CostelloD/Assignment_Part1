@@ -77,14 +77,14 @@ namespace EntAppSecond.Models
 
         [Required(ErrorMessage = "Please enter an email address")]
         [RegularExpression(@"^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$", ErrorMessage = "Not a Valid email address, please check and try again")]
-        [DataType(DataType.PhoneNumber)]
+        [DataType(DataType.EmailAddress)]
         public string FirstEmailAddress { get; set; }
 
         [DataType(DataType.EmailAddress)]
         [RegularExpression(@"^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$", ErrorMessage = "Not a Valid email address, please check and try again")]
         public string SecondEmailAddress { get; set; }
 
-        [Range(1,15015, ErrorMessage = "Please select one or more days")]
+        [Range(3,15015, ErrorMessage = "Please select one or more days")]
         [Required(ErrorMessage = "Please select the days for your child to attend")]
         public int DaysRequested { get; set; }
 

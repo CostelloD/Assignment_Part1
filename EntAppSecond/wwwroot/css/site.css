@@ -39,7 +39,7 @@ body {
 
 #start {
     color: antiquewhite;
-    background-color: yellowgreen;
+    background-color: green;
     padding: 30px;
     font-size: large;
     border-radius: 10px;
@@ -47,9 +47,10 @@ body {
 
     #start:hover {
         color: antiquewhite;
-        background-color: green;
+        background-color: yellowgreen;
         padding: 40px;
         font-size: large;
         border-radius: 10px;
-        box-shadow: blue 5px 5px;
+        box-shadow: yellow 5px 5px;
+        text-decoration:none;
     }

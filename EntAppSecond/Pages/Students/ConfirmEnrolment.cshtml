@@ -43,11 +43,25 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label asp-for="Student.StartDate">Start Date</label>
-                <input asp-for="Student.StartDate" class="form-control">
+                <br />
+                <span>@Model.Student.StartDate.ToString()</span>
+
             </div>
             <div class="form-group col-md-6">
-                <label asp-for="Student.PPSNumber">PPS Number</label>
-                <input asp-for="Student.PPSNumber" class="form-control">
+                <label asp-for="Student.HoursRequested">Fulltime/Partime</label>
+                <br />
+                @{
+                    string time = "";
+
+                    if (Model.Student.HoursRequested == 0)
+                    {
+                        time = "Fulltime";
+                    }
+                    else { time = "Partime"; }
+
+                }
+                <span>@time.ToString()</span>
+
             </div>
         </div>
     </fieldset>

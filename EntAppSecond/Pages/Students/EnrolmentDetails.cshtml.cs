@@ -27,7 +27,7 @@ namespace EntAppSecond.Pages.Students
 
             if (PPSNumber == null)
             {
-                return RedirectToPage("/Students/ListStudents");
+                return RedirectToPage("/Students/EnrolmentList");
             }
 
 

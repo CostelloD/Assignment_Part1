@@ -50,8 +50,9 @@
                     <span asp-validation-for="Student.DateOfBirth"></span>
                 </div>
                 <div class="form-group col-md-4">
+                    <span >Please select your Childs Gender</span>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" value="Male" asp-for="Student.Gender" checked onclick="Calculate()">
+                        <input class="form-check-input" type="radio" value="Male" asp-for="Student.Gender" onclick="Calculate()">
                         <label class="form-check-label" asp-for="Student.Gender">Male</label>
                     </div>
                     <div class="form-check form-check-inline">
@@ -101,7 +102,6 @@
             <div class="form-group">
                 <label asp-for="Student.Guardian">Select relationship to child from list:</label>
                 <select class="form-control" asp-items="Html.GetEnumSelectList<CreateModel.Relationship>()" asp-for="Student.Guardian" size="4">
-                    <option selected="selected">Please Select a guardian</option>
                 </select>
             </div>
 
@@ -140,6 +140,7 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label asp-for="Student.DaysRequested">Please select the days that you require</label>
+                    <br />
 
                     <select id="SelectedDays" name="Days" size="5" multiple onchange="Calculate()">
                         @{
@@ -149,12 +150,14 @@
                             }
                         }
                     </select>
+                    <br />
                     <input type="hidden" asp-for=Student.DaysRequested id="primedays" />
                     <span asp-validation-for="Student.DaysRequested"></span>
                 </div>
                 <div class="form-group col-md-6">
                     <div class="form-check-inline">
-                        <input type="radio" id="fulltime" value="1" asp-for="Student.HoursRequested" checked onclick="Calculate()">
+                        <span style="font:bolder">Please Select Full or Partime</span><br />
+                        <input type="radio" id="fulltime" value="1" asp-for="Student.HoursRequested" onclick="Calculate()">
                         <label class="form-check-label" asp-for="Student.HoursRequested">Fulltime</label>
                     </div>
                     <div class="form-check-inline">
@@ -182,13 +185,14 @@
                     <span id="price" class="spans"></span>
                 </div>
             </div>
+            <br /> <br />
 
             <button type="submit" class="btn btn-primary">Submit Application</button>
 
         </fieldset>
 
 
-        <div asp-validation-summary="All"></div>
+        @*<div asp-validation-summary="All"></div>*@
 
     </form>
 
