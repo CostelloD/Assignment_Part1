@@ -3,8 +3,39 @@
 
 // Write your Javascript code.
 
+//Script to calculate cost on Client Side and Convert days to int value
+
+function Calculate() {
+
+    var noOfDays = 0;
+    var total = 0;
+    var primes = [3, 5, 7, 11, 13];
+    var days = 1;
 
 
+    for (var i = 0; i < document.getElementById("SelectedDays").options.length; i++) {
+        if (document.getElementById("SelectedDays").options[i].selected) {
+            noOfDays++;
+            days = days * primes[i];
+        }
+    }
+
+    document.getElementById("numberofdays").innerHTML = noOfDays.toString();
+    document.getElementById("primedays").value = days;
+
+
+    if (document.getElementById("fulltime").checked) {
+        total = noOfDays * 35;
+    } else {
+        total = noOfDays * 20;
+    }
+
+    if (noOfDays > 3) {
+        total = total * 0.9;
+    }
+
+    document.getElementById("price").innerHTML = total.toString();
+}
 
 // The validation check for the application date
 

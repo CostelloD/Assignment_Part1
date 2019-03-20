@@ -24,8 +24,8 @@ namespace EntAppSecond.Models
         public string ChildSurname { get; set; }
 
         [Key]
-        [Required(ErrorMessage = "Please Enter a valid PPS Number")]
-        [RegularExpression(@"(s|S)\d{7}", ErrorMessage = "Not an valid PPS Number")]
+        [Required(ErrorMessage = "Please Enter a PPS Number")]
+        [RegularExpression(@"^(\d{7})([a-zA-Z]{1,2})$", ErrorMessage = "Not an valid PPS Number")]
         public string PPSNumber { get; set; }
 
         [Required(ErrorMessage = "Please enter a date of birth for the child")]
@@ -61,30 +61,34 @@ namespace EntAppSecond.Models
 
         [Required(ErrorMessage = "Please enter your Mobile Phone Number")]
         [Display(Name = "Mobile Phone Number")]
-        [RegularExpression(@"^(\D?)(\d{2,5})?\D?\d{2,3}(\D?)(\D?)\d{7}", ErrorMessage = "Not a Valid Mobile Number, please check and try again")]
+        [RegularExpression(@"^(08)([3-9])(\s?)(\d{7})", ErrorMessage = "Not a Valid Irish Mobile Number, please check and try again")]
         [DataType(DataType.PhoneNumber)]
         public string PhoneMobile { get; set; }
 
 
         [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^(\D?)(\d{2,5})?\D?\d{2,3}(\D?)(\D?)\d{7}", ErrorMessage = "Not a vaild Phone Number, please check and try again")]
         public string PhoneSecond { get; set; }
 
         [Required(ErrorMessage = "Please enter an alternate contact number")]
+        [RegularExpression(@"^(\D?)(\d{2,5})?\D?\d{2,3}(\D?)(\D?)\d{7}", ErrorMessage = "Not a Valid Phone Number, please check and try again")]
         [DataType(DataType.PhoneNumber)]
         public string PhoneThird { get; set; }
 
         [Required(ErrorMessage = "Please enter an email address")]
+        [RegularExpression(@"^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$", ErrorMessage = "Not a Valid email address, please check and try again")]
         [DataType(DataType.PhoneNumber)]
         public string FirstEmailAddress { get; set; }
 
         [DataType(DataType.EmailAddress)]
+        [RegularExpression(@"^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$", ErrorMessage = "Not a Valid email address, please check and try again")]
         public string SecondEmailAddress { get; set; }
 
-        [Range(1,15015)]
-        [Required(ErrorMessage = "Please select the days you with your child to attend")]
+        [Range(1,15015, ErrorMessage = "Please select one or more days")]
+        [Required(ErrorMessage = "Please select the days for your child to attend")]
         public int DaysRequested { get; set; }
 
-        [Required(ErrorMessage = "Please Select Partime of Fulltime option")]
+        [Required(ErrorMessage = "Please Select Partime or Fulltime option")]
         public int HoursRequested { get; set; }
 
         [Required(ErrorMessage = "Please Select a Startdate for your child")]

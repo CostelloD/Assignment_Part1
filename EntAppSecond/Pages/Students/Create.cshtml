@@ -99,11 +99,10 @@
             </div>
 
             <div class="form-group">
-                <label for="sel1">Select relationship to child from list:</label>
-                <select class="form-control" asp-items="Html.GetEnumSelectList<CreateModel.Relationship>()">
-                    <option value="value">Relationship - Chose one</option>
+                <label asp-for="Student.Guardian">Select relationship to child from list:</label>
+                <select class="form-control" asp-items="Html.GetEnumSelectList<CreateModel.Relationship>()" asp-for="Student.Guardian" size="4">
+                    <option selected="selected">Please Select a guardian</option>
                 </select>
-                <span asp-validation-for="Student.Guardian"></span>
             </div>
 
 
@@ -188,50 +187,8 @@
 
         </fieldset>
 
-        <script>
 
-            function Calculate() {
-
-                var noOfDays = 0;
-                var total = 0;
-                var primes = [3, 5, 7, 11, 13];
-                var days = 1;
-
-
-                for (var i = 0; i < document.getElementById("SelectedDays").options.length; i++) {
-                    if (document.getElementById("SelectedDays").options[i].selected) {
-                        noOfDays++;
-                        days = days * primes[i];
-                    }
-                }
-
-                document.getElementById("numberofdays").innerHTML = noOfDays.toString();
-                document.getElementById("primedays").value = days;
-
-
-                if (document.getElementById("fulltime").checked) {
-                    total = noOfDays * 35;
-                } else {
-                    total = noOfDays * 20;
-                }
-
-                if (noOfDays > 3) {
-                    total = total * 0.9;
-                }
-
-                document.getElementById("price").innerHTML = total.toString();
-            }
-
-            $('#startdate').datetimepicker({
-                defaultDate: new Date()
-            });
-
-
-            $("#startdate")
-
-        </script>
-
-        @*<div asp-validation-summary="All"></div>*@
+        <div asp-validation-summary="All"></div>
 
     </form>
 

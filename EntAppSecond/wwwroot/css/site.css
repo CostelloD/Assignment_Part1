@@ -35,3 +35,21 @@ body {
     padding:5px;
     font-size:large;
 }
+
+
+#start {
+    color: antiquewhite;
+    background-color: yellowgreen;
+    padding: 30px;
+    font-size: large;
+    border-radius: 10px;
+}
+
+    #start:hover {
+        color: antiquewhite;
+        background-color: green;
+        padding: 40px;
+        font-size: large;
+        border-radius: 10px;
+        box-shadow: blue 5px 5px;
+    }

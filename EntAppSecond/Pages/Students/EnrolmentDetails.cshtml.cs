@@ -24,14 +24,17 @@ namespace EntAppSecond.Pages.Students
 
         public async Task<IActionResult> OnGetAsync(string PPSNumber)
         {
+
+            if (PPSNumber == null)
+            {
+                return RedirectToPage("/Students/ListStudents");
+            }
+
+
             Student = await _db.Students.FindAsync(PPSNumber);
             Listdays = days();
             TotalCost = Cost();
 
-            if (Student == null)
-            {
-                return NotFound();
-            }
             return Page();
         }
 

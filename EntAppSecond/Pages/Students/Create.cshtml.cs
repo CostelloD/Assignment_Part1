@@ -14,8 +14,8 @@ namespace EntAppSecond.Pages.Students
 
         public enum Relationship
         {
-            Mother,
-            Father,
+            Mother = 0,
+            Father ,
             Other,
         }
 
