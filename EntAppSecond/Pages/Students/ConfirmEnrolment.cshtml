@@ -16,11 +16,10 @@
 
     <div class="row">
         <div class="col" style="border-radius:5px">
-            <h3 style="padding:10px; text-align:center">Your application has been submitted</h3>
+            <h3 style="padding:10px; text-align:center">Thank you for your application, details are summarised below</h3>
         </div>
     </div>
 
-    <a asp-page="ListStudents" asp-route-PPSNumber="@Model.Student.PPSNumber">Details</a>
 
     <fieldset class="panel-body">
 
@@ -65,6 +64,59 @@
             </div>
         </div>
     </fieldset>
+    <div class="col-md-6" style="background-color:lavender;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Days to attend</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>@Model.Listdays</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+    </div>
+    <div class="col-md-6" style="background-color:lavenderblush;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Total Cost (per week)</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>@Model.TotalCost</td>
+                    <td>
+                        @{string fullpart = "";
+                            if (Model.Student.HoursRequested == 0)
+                            {
+                                fullpart = "Partime rate of 20 euro/day applied";
+                            }
+                            else { fullpart = "Fulltime rate of 35 euro/day applied"; }
+                        }
+                        @fullpart.ToString()
+                    </td>
+                    <td>
+                        @{ string disc = "";
+                            if (Model.Listdays.Length > 27)
+                            {
+                                disc = "10% dscount applied for 4 or more days applied";
+                            }
+                        }
+                        @disc.ToString()
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 
 
 </body>
